@@ -1,0 +1,47 @@
+{
+  "uid": "gpu-status",
+  "title": "GPU Status",
+  "editable": true,
+  "graphTooltip": 1,
+  "schemaVersion": 39,
+  "time": { "from": "now-1h", "to": "now" },
+  "refresh": "15s",
+  "panels": [
+    {
+      "id": 1,
+      "type": "timeseries",
+      "title": "GPU Utilization (%)",
+      "gridPos": { "h": 8, "w": 24, "x": 0, "y": 0 },
+      "datasource": { "type": "prometheus", "uid": "prometheus" },
+      "targets": [{ "expr": "max by (gpu) (DCGM_FI_DEV_GPU_UTIL)", "legendFormat": "GPU {{gpu}}" }],
+      "fieldConfig": { "defaults": { "unit": "percent", "min": 0, "max": 100, "custom": { "fillOpacity": 10, "lineWidth": 2 } } }
+    },
+    {
+      "id": 2,
+      "type": "timeseries",
+      "title": "GPU Memory Used (MiB)",
+      "gridPos": { "h": 8, "w": 24, "x": 0, "y": 8 },
+      "datasource": { "type": "prometheus", "uid": "prometheus" },
+      "targets": [{ "expr": "max by (gpu) (DCGM_FI_DEV_FB_USED)", "legendFormat": "GPU {{gpu}}" }],
+      "fieldConfig": { "defaults": { "unit": "decmbytes", "min": 0, "custom": { "fillOpacity": 10, "lineWidth": 2 } } }
+    },
+    {
+      "id": 3,
+      "type": "timeseries",
+      "title": "GPU Temperature (°C)",
+      "gridPos": { "h": 8, "w": 24, "x": 0, "y": 16 },
+      "datasource": { "type": "prometheus", "uid": "prometheus" },
+      "targets": [{ "expr": "max by (gpu) (DCGM_FI_DEV_GPU_TEMP)", "legendFormat": "GPU {{gpu}}" }],
+      "fieldConfig": { "defaults": { "unit": "celsius", "min": 0, "max": 100, "custom": { "fillOpacity": 10, "lineWidth": 2 } } }
+    },
+    {
+      "id": 4,
+      "type": "timeseries",
+      "title": "GPU Power Draw (W)",
+      "gridPos": { "h": 8, "w": 24, "x": 0, "y": 24 },
+      "datasource": { "type": "prometheus", "uid": "prometheus" },
+      "targets": [{ "expr": "max by (gpu) (DCGM_FI_DEV_POWER_USAGE)", "legendFormat": "GPU {{gpu}}" }],
+      "fieldConfig": { "defaults": { "unit": "watt", "min": 0, "custom": { "fillOpacity": 10, "lineWidth": 2 } } }
+    }
+  ]
+}
