@@ -22,24 +22,16 @@ Current target environment:
 # Architecture
 
 ```text
-+-------------------+
-| GPU Server        |
-|-------------------|
-| Docker Engine     |
-| NVIDIA Runtime    |
-+---------+---------+
-          |
-          v
-+-------------------+
-| DCGM Exporter     |
-| GPU Metrics       |
-+---------+---------+
-          |
-          v
-+-------------------+
-| Prometheus        |
-| Metrics Storage   |
-+---------+---------+
++-------------------+     +-------------------+
+| DCGM Exporter     |     | Node Exporter     |
+| GPU Metrics       |     | System Metrics    |
++---------+---------+     +---------+---------+
+          |                         |
+          v                         v
++-------------------------------------------+
+| Prometheus                                |
+| Metrics Storage                           |
++---------+---------------------------------+
           |
           v
 +-------------------+
@@ -64,6 +56,19 @@ Metrics include:
 - power draw
 - PCIe metrics
 - ECC status
+
+---
+
+## Node Exporter
+
+Collects system-level metrics.
+
+Metrics include:
+
+- CPU usage
+- RAM usage
+- disk usage and IO
+- network traffic
 
 ---
 
@@ -102,14 +107,22 @@ Change the password immediately after first login.
 # Repository Structure
 
 ```text
-platform-monitoring/
+Monitoring/
 ├── docker-compose.yml
 ├── prometheus.yml
+├── deployment/
+│   └── deploy.sh
 ├── grafana/
-│   ├── dashboards/
-│   └── datasources/
-├── prometheus/
-├── dcgm/
+│   ├── provisioning/
+│   │   ├── datasources/
+│   │   └── dashboards/
+│   └── dashboards/
+│       ├── server-stats.json
+│       └── gpu-status.json
+├── .claude/
+│   └── skills/
+│       ├── monitor/
+│       └── deployment/
 └── README.md
 ```
 
@@ -149,7 +162,13 @@ cd Monitoring
 
 ---
 
-## 2. Start Monitoring Stack
+## 2. Deploy Monitoring Stack
+
+```bash
+./deployment/deploy.sh -k <SSH_KEY_PATH>
+```
+
+Or start locally:
 
 ```bash
 docker compose up -d
@@ -166,9 +185,10 @@ docker ps
 Expected containers:
 
 ```text
+dcgm-exporter
+node-exporter
 prometheus
 grafana
-dcgm-exporter
 ```
 
 ---
@@ -283,7 +303,7 @@ Add container monitoring.
 Add:
 
 - cAdvisor
-- node_exporter
+- ~~node_exporter~~ (done)
 - Loki
 
 Track:
