@@ -1,0 +1,120 @@
+{
+  "uid": "gpu-status",
+  "title": "GPU Status",
+  "editable": true,
+  "graphTooltip": 1,
+  "schemaVersion": 39,
+  "time": { "from": "now-1h", "to": "now" },
+  "refresh": "15s",
+  "panels": [
+    {
+      "id": 1, "type": "timeseries", "title": "GPU 0 Memory",
+      "gridPos": { "h": 6, "w": 6, "x": 0, "y": 0 },
+      "datasource": { "type": "prometheus", "uid": "prometheus" },
+      "targets": [
+        { "expr": "max by (gpu) (DCGM_FI_DEV_FB_USED{gpu=\"0\"})", "legendFormat": "Used", "refId": "A" },
+        { "expr": "max by (gpu) (DCGM_FI_DEV_FB_FREE{gpu=\"0\"})", "legendFormat": "Free", "refId": "B" }
+      ],
+      "fieldConfig": { "defaults": { "unit": "decmbytes", "min": 0, "custom": { "fillOpacity": 10, "lineWidth": 2 } } }
+    },
+    {
+      "id": 2, "type": "timeseries", "title": "GPU 1 Memory",
+      "gridPos": { "h": 6, "w": 6, "x": 6, "y": 0 },
+      "datasource": { "type": "prometheus", "uid": "prometheus" },
+      "targets": [
+        { "expr": "max by (gpu) (DCGM_FI_DEV_FB_USED{gpu=\"1\"})", "legendFormat": "Used", "refId": "A" },
+        { "expr": "max by (gpu) (DCGM_FI_DEV_FB_FREE{gpu=\"1\"})", "legendFormat": "Free", "refId": "B" }
+      ],
+      "fieldConfig": { "defaults": { "unit": "decmbytes", "min": 0, "custom": { "fillOpacity": 10, "lineWidth": 2 } } }
+    },
+    {
+      "id": 3, "type": "timeseries", "title": "GPU 2 Memory",
+      "gridPos": { "h": 6, "w": 6, "x": 12, "y": 0 },
+      "datasource": { "type": "prometheus", "uid": "prometheus" },
+      "targets": [
+        { "expr": "max by (gpu) (DCGM_FI_DEV_FB_USED{gpu=\"2\"})", "legendFormat": "Used", "refId": "A" },
+        { "expr": "max by (gpu) (DCGM_FI_DEV_FB_FREE{gpu=\"2\"})", "legendFormat": "Free", "refId": "B" }
+      ],
+      "fieldConfig": { "defaults": { "unit": "decmbytes", "min": 0, "custom": { "fillOpacity": 10, "lineWidth": 2 } } }
+    },
+    {
+      "id": 4, "type": "timeseries", "title": "GPU 3 Memory",
+      "gridPos": { "h": 6, "w": 6, "x": 18, "y": 0 },
+      "datasource": { "type": "prometheus", "uid": "prometheus" },
+      "targets": [
+        { "expr": "max by (gpu) (DCGM_FI_DEV_FB_USED{gpu=\"3\"})", "legendFormat": "Used", "refId": "A" },
+        { "expr": "max by (gpu) (DCGM_FI_DEV_FB_FREE{gpu=\"3\"})", "legendFormat": "Free", "refId": "B" }
+      ],
+      "fieldConfig": { "defaults": { "unit": "decmbytes", "min": 0, "custom": { "fillOpacity": 10, "lineWidth": 2 } } }
+    },
+    {
+      "id": 5, "type": "timeseries", "title": "GPU 4 Memory",
+      "gridPos": { "h": 6, "w": 6, "x": 0, "y": 6 },
+      "datasource": { "type": "prometheus", "uid": "prometheus" },
+      "targets": [
+        { "expr": "max by (gpu) (DCGM_FI_DEV_FB_USED{gpu=\"4\"})", "legendFormat": "Used", "refId": "A" },
+        { "expr": "max by (gpu) (DCGM_FI_DEV_FB_FREE{gpu=\"4\"})", "legendFormat": "Free", "refId": "B" }
+      ],
+      "fieldConfig": { "defaults": { "unit": "decmbytes", "min": 0, "custom": { "fillOpacity": 10, "lineWidth": 2 } } }
+    },
+    {
+      "id": 6, "type": "timeseries", "title": "GPU 5 Memory",
+      "gridPos": { "h": 6, "w": 6, "x": 6, "y": 6 },
+      "datasource": { "type": "prometheus", "uid": "prometheus" },
+      "targets": [
+        { "expr": "max by (gpu) (DCGM_FI_DEV_FB_USED{gpu=\"5\"})", "legendFormat": "Used", "refId": "A" },
+        { "expr": "max by (gpu) (DCGM_FI_DEV_FB_FREE{gpu=\"5\"})", "legendFormat": "Free", "refId": "B" }
+      ],
+      "fieldConfig": { "defaults": { "unit": "decmbytes", "min": 0, "custom": { "fillOpacity": 10, "lineWidth": 2 } } }
+    },
+    {
+      "id": 7, "type": "timeseries", "title": "GPU 6 Memory",
+      "gridPos": { "h": 6, "w": 6, "x": 12, "y": 6 },
+      "datasource": { "type": "prometheus", "uid": "prometheus" },
+      "targets": [
+        { "expr": "max by (gpu) (DCGM_FI_DEV_FB_USED{gpu=\"6\"})", "legendFormat": "Used", "refId": "A" },
+        { "expr": "max by (gpu) (DCGM_FI_DEV_FB_FREE{gpu=\"6\"})", "legendFormat": "Free", "refId": "B" }
+      ],
+      "fieldConfig": { "defaults": { "unit": "decmbytes", "min": 0, "custom": { "fillOpacity": 10, "lineWidth": 2 } } }
+    },
+    {
+      "id": 8, "type": "timeseries", "title": "GPU 7 Memory",
+      "gridPos": { "h": 6, "w": 6, "x": 18, "y": 6 },
+      "datasource": { "type": "prometheus", "uid": "prometheus" },
+      "targets": [
+        { "expr": "max by (gpu) (DCGM_FI_DEV_FB_USED{gpu=\"7\"})", "legendFormat": "Used", "refId": "A" },
+        { "expr": "max by (gpu) (DCGM_FI_DEV_FB_FREE{gpu=\"7\"})", "legendFormat": "Free", "refId": "B" }
+      ],
+      "fieldConfig": { "defaults": { "unit": "decmbytes", "min": 0, "custom": { "fillOpacity": 10, "lineWidth": 2 } } }
+    },
+    {
+      "id": 10,
+      "type": "timeseries",
+      "title": "GPU Utilization (%)",
+      "gridPos": { "h": 8, "w": 24, "x": 0, "y": 12 },
+      "datasource": { "type": "prometheus", "uid": "prometheus" },
+      "targets": [{ "expr": "max by (gpu) (DCGM_FI_DEV_GPU_UTIL)", "legendFormat": "GPU {{gpu}}" }],
+      "fieldConfig": { "defaults": { "unit": "percent", "min": 0, "max": 100, "custom": { "fillOpacity": 10, "lineWidth": 2 } } }
+    },
+    {
+      "id": 11,
+      "type": "timeseries",
+      "title": "GPU Temperature (°C)",
+      "gridPos": { "h": 8, "w": 12, "x": 0, "y": 20 },
+      "datasource": { "type": "prometheus", "uid": "prometheus" },
+      "targets": [{ "expr": "max by (gpu) (DCGM_FI_DEV_GPU_TEMP)", "legendFormat": "GPU {{gpu}}" }],
+      "fieldConfig": { "defaults": { "unit": "celsius", "min": 0, "max": 100, "custom": { "fillOpacity": 10, "lineWidth": 2 },
+        "thresholds": { "mode": "absolute", "steps": [{"color":"green","value":null},{"color":"yellow","value":70},{"color":"red","value":85}]}
+      }}
+    },
+    {
+      "id": 12,
+      "type": "timeseries",
+      "title": "GPU Power Draw (W)",
+      "gridPos": { "h": 8, "w": 12, "x": 12, "y": 20 },
+      "datasource": { "type": "prometheus", "uid": "prometheus" },
+      "targets": [{ "expr": "max by (gpu) (DCGM_FI_DEV_POWER_USAGE)", "legendFormat": "GPU {{gpu}}" }],
+      "fieldConfig": { "defaults": { "unit": "watt", "min": 0, "custom": { "fillOpacity": 10, "lineWidth": 2 } } }
+    }
+  ]
+}
